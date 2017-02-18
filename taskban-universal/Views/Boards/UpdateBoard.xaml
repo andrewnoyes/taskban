@@ -1,0 +1,62 @@
+﻿<ContentDialog
+    x:Class="TamedTasks.Views.Boards.UpdateBoard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TamedTasks.Views.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:expander="using:Expander"
+    xmlns:colorPicker="using:ColorPicker"
+    mc:Ignorable="d"
+    Title="New Board"
+    PrimaryButtonText="SAVE"
+    SecondaryButtonText="CANCEL"
+    PrimaryButtonCommand="{Binding SaveBoardCommand}">
+
+    <Grid Margin="0,10,0,0">
+        <StackPanel >
+            <TextBox Header="title"
+                     PlaceholderText="My Board"
+                     Text="{Binding Title, Mode=TwoWay}"
+                     TextWrapping="Wrap"/>
+            <StackPanel Margin="0,5,0,0"
+                        Orientation="Horizontal">
+                <TextBlock Text="in project:"/>
+                <TextBlock Text="{Binding ProjectName}"
+                           Margin="5,0,0,0"/>
+            </StackPanel>
+
+            <TextBlock Text="optional..."
+                       Margin="0,10,0,10"
+                       FontWeight="Light"/>
+
+            <TextBox IsSpellCheckEnabled="True"
+                     TextWrapping="Wrap"
+                     Header="description"
+                     MinHeight="75"
+                     Text="{Binding Description, Mode=TwoWay}"/>
+            <!-- TODO: replace with new colorpicker
+            <TextBlock Text="background"
+                       Margin="0,10,0,0"/>
+            <Grid Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox HorizontalAlignment="Stretch">
+
+                </ComboBox>
+                <Button Grid.Column="1"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Margin="5,0,0,0">
+                    <SymbolIcon Symbol="Add"/>
+                </Button>
+            </Grid>-->
+
+        </StackPanel>
+    </Grid>
+</ContentDialog>
+
+
+

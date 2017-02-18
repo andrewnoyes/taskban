@@ -1,0 +1,40 @@
+﻿<ContentDialog
+    x:Class="TamedTasks.Views.Controls.ImportNotebooks"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Import OneNote Notebooks"
+    PrimaryButtonText="IMPORT"
+    SecondaryButtonText="CANCEL"
+    PrimaryButtonCommand="{Binding ImportNotebooks}">
+
+    <ContentDialog.Resources>
+        <DataTemplate x:Key="CheckBoxes">
+            <CheckBox IsChecked="{Binding ImportIntoDb, Mode=TwoWay}" 
+                      Content="{Binding Name}"/>
+        </DataTemplate>
+    </ContentDialog.Resources>
+
+    <Grid Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ProgressRing IsActive="{Binding IsLoading}"
+                      Grid.Row="0"
+                      Grid.RowSpan="2"/>
+        <ListBox Grid.Row="0"
+                 x:Name="ListBox"
+                 ItemsSource="{Binding Notebooks, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 ItemTemplate="{StaticResource CheckBoxes}"
+                 MaxHeight="400"/>
+        <Button Grid.Row="1"
+                Content="SELECT ALL"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Command="{Binding SelectAll}"
+                Margin="20,10,0,0"/>
+    </Grid>
+</ContentDialog>

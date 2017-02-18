@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="TamedTasks.Views.Pages.ChatPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TamedTasks.Views.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:pages="using:TamedTasks.ViewModels.Pages"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <pages:ChatPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--  header  -->
+        <controls:PageHeader x:Name="pageHeader" Content="Chat"
+                             Frame="{x:Bind Frame}"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" />
+
+        <Grid RelativePanel.Below="pageHeader"
+              RelativePanel.AlignLeftWithPanel="True"
+              RelativePanel.AlignRightWithPanel="True"
+              RelativePanel.AlignBottomWithPanel="True">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListView ItemsSource="{Binding ChatMessages}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<universalMarkdown:MarkdownTextBlock Markdown="{Binding Message}"/>-->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.Row="1"
+                  Margin="20"
+                  BorderBrush="DimGray"
+                  BorderThickness="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Background="Transparent"
+                        BorderBrush="Transparent"
+                        VerticalAlignment="Top">
+                    <SymbolIcon Symbol="Add"/>
+                </Button>
+                <TextBox Grid.Column="1"
+                         TextWrapping="Wrap"
+                         BorderBrush="Transparent"
+                         KeyDown="OnMessageKeyDown"
+                         Text="{Binding ChatMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         x:Name="ChatTextBox"
+                         MaxHeight="300"/>
+                <Button Background="Transparent"
+                        BorderBrush="Transparent"
+                        Grid.Column="2"
+                        VerticalAlignment="Top">
+                    <SymbolIcon Symbol="Emoji"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </RelativePanel>
+</Page>

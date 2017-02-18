@@ -1,0 +1,94 @@
+﻿<UserControl
+    x:Class="TamedTasks.Views.Boards.BoardsList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TamedTasks.Views.Boards"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Boards list -->
+        <TextBlock Grid.Row="0"
+                   FontSize="18"
+                   Text="Boards"/>
+        <ListView ItemsSource="{Binding Boards, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Board, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Grid.Column="0"
+                  Margin="0,10,0,0"
+                  FontSize="18"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="1"
+                  x:Name="BoardsListView"
+                  RightTapped="OnBoardsListRightTapped">
+            <ListView.Resources>
+                <MenuFlyout x:Name="BoardsListMenu">
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem Text="Edit" Click="OnEditBoard" />
+                        <MenuFlyoutItem Text="Delete" Click="OnDeleteBoard"/>
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </ListView.Resources>
+        </ListView>
+
+        <!-- Board actions -->
+        <Grid Grid.Row="2"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              HorizontalAlignment="Stretch"
+              Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--<Button Command="{Binding AddBoardCommand}"
+                    ToolTipService.ToolTip="Add a board to this project"
+                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                    HorizontalAlignment="Stretch"
+                    Click="OnNewBoard">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Add"/>
+                    <TextBlock Text="ADD"
+                               Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>-->
+            <Button ToolTipService.ToolTip="Edit selected board"
+                    Command="{Binding EditBoardCommand}"
+                    Click="OnEditBoard"
+                    HorizontalAlignment="Stretch"
+                    Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Edit"/>
+                    <TextBlock Text="EDIT"
+                               Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button ToolTipService.ToolTip="Delete selected project"
+                    Command="{Binding EditBoardCommand}"
+                    Click="OnDeleteBoard"
+                    Margin="5,0,0,0"
+                    HorizontalAlignment="Stretch"
+                    Grid.Column="2">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Delete"/>
+                    <TextBlock Text="DELETE"
+                               Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </Grid >
+    </Grid>
+</UserControl>
