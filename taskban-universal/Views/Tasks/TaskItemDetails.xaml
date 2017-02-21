@@ -17,6 +17,7 @@
         <util:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <util:FocusStateToVisibilityConverter x:Key="FocusStateToVisibilityConverter"/>
         <converters:BoolToObjectConverter x:Key="BoolInvertVisibilityConverter" TrueValue="Collapsed" FalseValue="Visible"/>
+        <converters:BoolToObjectConverter x:Key="CloseDeleteConverter" TrueValue="Delete" FalseValue="Clear"/>
     </ContentDialog.Resources>
 
     <StackPanel Margin="0,10,0,0">
@@ -29,7 +30,7 @@
                     Background="Transparent"
                     BorderBrush="Transparent"
                     Click="OnCloseDetails">
-                <SymbolIcon Symbol="Clear"/>
+                <SymbolIcon Symbol="{Binding DeleteTaskItem, Converter={StaticResource CloseDeleteConverter}}"/>
             </Button>
         </Grid>
         <TextBox Text="{Binding TaskItem.Title, Mode=TwoWay}"

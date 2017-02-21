@@ -31,10 +31,11 @@
                                           AutomationProperties.Name="Jerry"
                                           >
                 <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Width="48" Height="48"
-                                Symbol="Home" />
+                    <SymbolIcon Width="48" 
+                                Height="48"
+                                Symbol="GoToToday" />
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Home" />
+                               Text="Today" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
             <!-- boards page button -->
@@ -45,7 +46,7 @@
                     <SymbolIcon Width="48" Height="48"
                                 Symbol="AllApps" />
                     <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
-                               Text="Task Boards" />
+                               Text="Boards" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
             <!-- chat page-->

@@ -211,6 +211,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\inbox-black-48x48.png" />
     <Content Include="Assets\microsoft-logo.png" />
     <Content Include="Assets\onenote.png" />
     <Content Include="Assets\outlook-0.png" />
