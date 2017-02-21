@@ -18,7 +18,8 @@
  - [ ] Add OneNote task items from imported boards
  - [ ] Add labels and integrate OneNote labels/data-tags
  - [ ] Add Outlook tasks 
- - [ ] Support Markdown in task item details
+ - [x] Support Markdown in task item details
+ - [ ] Reference Git commits in tasks
 - Calendar: 
  - [ ] Display task items with due dates
  - [ ] Import tasks from Outlook
