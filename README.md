@@ -35,4 +35,4 @@
 
 
  ### test
- ![task boards page](http://i.imgur.com/wRTnBrd.png)
+ ![task boards page](http://i.imgur.com/BEXMKFz.png)
