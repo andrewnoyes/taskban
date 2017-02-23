@@ -83,6 +83,8 @@ namespace TamedTasks.Views.Pages
             e.AcceptedOperation = DataPackageOperation.Move;
         }
 
+        private TaskListVm _sourceList;
+        private TaskListVm SourceList
         {
             get { return _sourceList; }
             set
@@ -97,6 +99,7 @@ namespace TamedTasks.Views.Pages
 
         private async void OnListDrop(object sender, DragEventArgs e)
         {
+            var target = (sender as ListView)?.DataContext as TaskListVm;
             if (target == null) return;
 
             if (!e.DataView.Contains(StandardDataFormats.Text)) return;
@@ -126,10 +129,12 @@ namespace TamedTasks.Views.Pages
 
         private void OnDragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
+            var source = (sender as ListView)?.DataContext as TaskListVm;
             if (source == null) return;
 
             SourceList = source;
 
+            var items = (from TaskItemVm item
                          in e.Items
                          where item != null
                          select item.TaskItem.Id).ToList();
@@ -271,6 +276,15 @@ namespace TamedTasks.Views.Pages
 
         private async void OnNewProject(object sender, RoutedEventArgs e)
         {
+            //try
+            //{
+            //    await new NewProject { DataContext = ViewModel.SelectedProjectViewModel.NewProjectViewModel }.ShowAsync();
+            //    AddFlyout.Hide();
+            //}
+            //catch (RuntimeBinderException ex)
+            //{
+            //    Debug.WriteLine($"add project ex:{ex}");
+            //}
         }
 
         private async void OnNewBoard(dynamic sender, RoutedEventArgs e)

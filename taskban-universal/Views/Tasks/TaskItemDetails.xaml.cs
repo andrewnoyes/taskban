@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Microsoft.CSharp.RuntimeBinder;
+using taskban_universal.ViewModels.Tasks;
 using TamedTasks.Models.Common;
 using TamedTasks.ViewModels.Tasks;
 using WinRTXamlToolkit.Controls.Extensions;
@@ -12,8 +13,8 @@ namespace TamedTasks.Views.Tasks
 {
     public sealed partial class TaskItemDetails
     {
-        private TaskItemViewModel _viewModel;
-        private TaskItemViewModel ViewModel => _viewModel ?? (_viewModel = DataContext as TaskItemViewModel);
+        private TaskItemVm _viewModel;
+        private TaskItemVm ViewModel => _viewModel ?? (_viewModel = DataContext as TaskItemVm);
 
         public TaskItemDetails()
         {
@@ -70,6 +71,16 @@ namespace TamedTasks.Views.Tasks
         private void OnDetailsClosing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
             ViewModel.SaveTaskItem();
+        }
+        
+        private void OnChecklistComplete(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("wtf");
+        }
+
+        private void UIElement_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }
