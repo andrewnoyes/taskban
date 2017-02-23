@@ -56,7 +56,7 @@ namespace TamedTasks
             //await Task.Delay(1000);
 
             //NavigationService.Navigate(typeof(Views.MainPage)); todo: disabling main page for now -- this will eventually load the last saved state
-            NavigationService.Navigate(typeof(TaskBoardsPage));
+            NavigationService.Navigate(typeof(ProjectBoardsPage));
             await Task.CompletedTask;
         }
 

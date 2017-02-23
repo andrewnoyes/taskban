@@ -26,6 +26,7 @@
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
 
         <Controls:HamburgerMenu.PrimaryButtons>
+            
             <!--  mainpage button  -->
             <Controls:HamburgerButtonInfo PageType="pages:MainPage" 
                                           AutomationProperties.Name="Jerry"
@@ -38,6 +39,7 @@
                                Text="Today" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
+            
             <!-- boards page button -->
             <Controls:HamburgerButtonInfo PageType="pages:TaskBoardsPage" 
                                           AutomationProperties.Name="Jerry"
@@ -45,11 +47,29 @@
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Width="48" Height="48"
                                 Symbol="AllApps" />
-                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center"
+                    <TextBlock Margin="12,0,0,0" 
+                               VerticalAlignment="Center"
                                Text="Boards" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
+            
+            <Controls:HamburgerButtonInfo PageType="pages:ProjectBoardsPage" 
+                                          AutomationProperties.Name="Larry"
+                                          >
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Width="48" Height="48"
+                                Symbol="Library" />
+                    <TextBlock Margin="12,0,0,0" 
+                               VerticalAlignment="Center"
+                               Text="Boards" />
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
+            
+            
+            
+            
             <!-- chat page-->
+
             <!--<Controls:HamburgerButtonInfo PageType="pages:ChatPage" 
                                           AutomationProperties.Name="Jerry"
                                           >

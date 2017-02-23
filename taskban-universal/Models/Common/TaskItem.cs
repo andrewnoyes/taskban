@@ -15,7 +15,12 @@ namespace TamedTasks.Models.Common
         /// <summary>
         /// Contains either decoded HTML string from OneNote page or user input.
         /// </summary>
-        public string Title { get; set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title;}
+            set { _title = value; OnPropertyChanged(); }
+        }
 
         // todo: probably not needed
         public string Contents { get; set; }

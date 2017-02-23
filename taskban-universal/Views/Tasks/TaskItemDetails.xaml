@@ -68,6 +68,7 @@
                       Name="Checklist"
                       MaxHeight="300"
                       SelectionMode="None"
+                      IsItemClickEnabled="False"
                       Header="checklist">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -81,16 +82,30 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <CheckBox IsChecked="{Binding IsComplete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <CheckBox IsChecked="{Binding IsComplete, Mode=TwoWay}"
                                       HorizontalAlignment="Stretch"
                                       HorizontalContentAlignment="Stretch"
-                                      VerticalContentAlignment="Center"
-                                      IsTabStop="False">
+                                      VerticalContentAlignment="Center">
+                                </CheckBox>
                                 <TextBox Text="{Binding Contents, Mode=TwoWay}"
                                          Name="ChecklistItem"
                                          TextWrapping="Wrap"
-                                         BorderBrush="Transparent"/>
-                            </CheckBox>
+                                         BorderBrush="Transparent"
+                                         Grid.Column="1"
+                                         Grid.Row="0"
+                                         Grid.RowSpan="2"
+                                         Margin="-100,0,0,0"/>
+                            </Grid>
+
                             <Grid Grid.Row="1" 
                                   Margin="0,5,0,0"
                                   Visibility="{Binding ElementName=ChecklistItem, Path=FocusState, Converter={StaticResource FocusStateToVisibilityConverter}}">

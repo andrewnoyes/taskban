@@ -15,11 +15,6 @@ namespace TamedTasks.Models.Common
         public string Description { get; set; }
 
         /// <summary>
-        /// The index of the tasklist in the board.
-        /// </summary>
-        public int Order { get; set; }
-
-        /// <summary>
         /// Background color displayed in board.
         /// </summary>
         public byte[] Color { get; set; }

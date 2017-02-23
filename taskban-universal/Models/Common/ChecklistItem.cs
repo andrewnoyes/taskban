@@ -19,7 +19,7 @@ namespace TamedTasks.Models.Common
             set
             {
                 _isComplete = value;
-                OnPropertyChanged(nameof(IsComplete));
+                OnPropertyChanged();
             }
         }
 

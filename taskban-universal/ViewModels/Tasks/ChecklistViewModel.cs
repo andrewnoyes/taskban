@@ -61,16 +61,26 @@ namespace TamedTasks.ViewModels.Tasks
         private readonly string _taskItemId;
         private bool _autoSave;
 
+        private void UpdateChecklistProps()
+        {
+            if (ChecklistItems != null)
+            {
+                CompleteChecklistItems = ChecklistItems.Count(c => c.IsComplete);
+            }
+
+            HasChecklist = ChecklistItems != null && ChecklistItems.Count > 0;
+        }
+
         public ChecklistViewModel(string taskItemId, bool autoSave = false)
         {
             _taskItemId = taskItemId;
-            //ChecklistItems = new ObservableCollection<ChecklistItem>(checklistItems);
             _autoSave = autoSave;
             ChecklistItems = new ObservableCollection<ChecklistItem>(DbManager.Instance.GetChecklistItemsInTaskItem(taskItemId));
         }
 
         internal bool Save()
         {
+            UpdateChecklistProps();
             return DbManager.Instance.InsertOrUpdateList(ChecklistItems.ToArray());
         }
 
@@ -100,6 +110,7 @@ namespace TamedTasks.ViewModels.Tasks
         public Task DeleteChecklistItemAsync(ChecklistItem itemToDelete)
         {
             ChecklistItems.Remove(itemToDelete);
+            UpdateChecklistProps();
             return Task.Run(() => DbManager.Instance.DeleteEntity(itemToDelete));
         }
 

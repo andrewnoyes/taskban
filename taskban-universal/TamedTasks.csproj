@@ -129,8 +129,10 @@
     <Compile Include="Util\Library.cs" />
     <Compile Include="Util\NotifyTaskCompletion.cs" />
     <Compile Include="ViewModels\Boards\BoardsListViewModel.cs" />
+    <Compile Include="ViewModels\Boards\BoardVm.cs" />
     <Compile Include="ViewModels\Pages\CalendarPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\ChatPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\ProjectBoardsPageViewModel.cs" />
     <Compile Include="ViewModels\Projects\ProjectViewModel.cs" />
     <Compile Include="ViewModels\Boards\BoardViewModel.cs" />
     <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
@@ -139,18 +141,24 @@
     <Compile Include="ViewModels\Projects\EditProjectViewModel.cs" />
     <Compile Include="ViewModels\Projects\NewProjectViewModel.cs" />
     <Compile Include="ViewModels\Pages\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\Projects\ProjectVm.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Pages\TaskBoardsPageViewModel.cs" />
     <Compile Include="ViewModels\Tasks\AddTaskListViewModel.cs" />
     <Compile Include="ViewModels\Tasks\ChecklistViewModel.cs" />
     <Compile Include="ViewModels\Tasks\TaskItemViewModel.cs" />
+    <Compile Include="ViewModels\Tasks\TaskItemVm.cs" />
     <Compile Include="ViewModels\Tasks\TaskListViewModel.cs" />
+    <Compile Include="ViewModels\Tasks\TaskListVm.cs" />
     <Compile Include="Views\Behaviors\AutoScrollToLastItem.cs" />
     <Compile Include="Views\Boards\BoardsList.xaml.cs">
       <DependentUpon>BoardsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\ProjectBoardsPage.xaml.cs">
+      <DependentUpon>ProjectBoardsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tasks\NewTaskList.xaml.cs">
       <DependentUpon>NewTaskList.xaml</DependentUpon>
@@ -246,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\ChatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\ProjectBoardsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
